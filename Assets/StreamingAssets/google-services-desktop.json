@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "646739356911",
+    "firebase_url": "https://miawunitybase.firebaseio.com",
+    "project_id": "miawunitybase",
+    "storage_bucket": "miawunitybase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646739356911:android:a4e1b084fe78edc3",
+        "android_client_info": {
+          "package_name": "xyz.miaw.miawunitybase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646739356911-egcp4os55m9sad3aavv7v2dop29v1ld0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Tz5Zz09TI2M8S9qXM9NQtVLgW0PAXwM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
