@@ -150,6 +150,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: xyz.miaw.miawunitybase
     Standalone: com.Company.ProductName
+    iOS: xyz.miaw.miawunitybase
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
