@@ -9,7 +9,7 @@ public class AdmobBannerScript : MonoBehaviour
 
     private BannerView _bannerView;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update zz
     void Start()
     {
 
