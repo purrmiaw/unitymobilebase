@@ -3,7 +3,7 @@
     {
       "services": {
         "appinvite_service": {
-          "status": 0
+          "status": 1
         }, 
         "analytics_service": {
           "status": 0
