@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class FirebaseScript : MonoBehaviour
 {
-
     FirebaseApp _app;
     private bool _firebaseExists = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -26,8 +24,13 @@ public class FirebaseScript : MonoBehaviour
                 // application.
                 _firebaseExists = true;
 
+                // analytics
                 Firebase.Analytics.FirebaseAnalytics
                   .LogEvent(Firebase.Analytics.FirebaseAnalytics.EventEarnVirtualCurrency);
+
+                // push notifications
+                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
 
             }
             else
@@ -44,5 +47,15 @@ public class FirebaseScript : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
+    {
+        UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
+    }
+
+    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)
+    {
+        UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
     }
 }
