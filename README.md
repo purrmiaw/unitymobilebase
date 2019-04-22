@@ -26,4 +26,10 @@ iOS: Open PListProcessor.cs in the Assets/GoogleMobileAds/Editor and replace the
 
 https://developers.google.com/admob/unity/start
 
+## Change push notification icon 
+
+### Android
+
+Go to Assets/Plugins/Android/MiawUnityAndroidBasePlugin/res and update the icons to whatever you want. Make sure the name is the same. If you change the name, update the AndroidManifest.xml (in /MiawUnityAndroidBasePlugin/) file accordingly.
+
 That should be it.
