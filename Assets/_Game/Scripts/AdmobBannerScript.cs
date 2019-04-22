@@ -16,7 +16,7 @@ public class AdmobBannerScript : MonoBehaviour
         string appId = "";
 
 #if UNITY_ANDROID
-            appId = "ca-app-pub-3940256099942544~3347511713";
+            appId = "ca-app-pub-5129348250377085~1856868770";
 #elif UNITY_IPHONE
             appId = "ca-app-pub-3940256099942544~1458002511";
 #else
