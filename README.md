@@ -12,14 +12,14 @@ git clone https://github.com/purrmiaw/unitymobilebase
 
 # Steps to use
 
-1. Firebase google-services file
+## Replace Firebase google-services files
 
 Replace the GoogleService-Info.plist and google-services.json files with your own. You can get it from Firebase console.
 
 https://firebase.google.com/docs/unity/setup
 
 
-2. Set the APP ID for Admob integration
+## Set the APP ID for Admob integration
 
 Android: Add your AdMob app ID to the AndroidManifest.xml file in the Assets/Plugins/Android/GoogleMobileAdsPlugin .
 iOS: Open PListProcessor.cs in the Assets/GoogleMobileAds/Editor and replace the Admob app ID.
