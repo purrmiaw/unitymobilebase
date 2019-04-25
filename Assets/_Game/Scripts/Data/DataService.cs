@@ -5,17 +5,20 @@ using System.Collections;
 using System.IO;
 #endif
 using System.Collections.Generic;
+using Assets._Game.Scripts.Models;
 
-public class DataService
+namespace Assets._Game.Scripts.Data
 {
-
-    private SQLiteConnection _connection;
-
-    public DataService(string DatabaseName)
+    public class DataService
     {
 
+        private SQLiteConnection _connection;
+
+        public DataService(string DatabaseName)
+        {
+
 #if UNITY_EDITOR
-        var dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
+            var dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -61,17 +64,17 @@ public class DataService
 
         var dbPath = filepath;
 #endif
-        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
-        Debug.Log("Final PATH: " + dbPath);
+            _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
+            Debug.Log("Final PATH: " + dbPath);
 
-    }
+        }
 
-    public void CreateDB()
-    {
-        _connection.DropTable<Person>();
-        _connection.CreateTable<Person>();
+        public void CreateDB()
+        {
+            _connection.DropTable<Person>();
+            _connection.CreateTable<Person>();
 
-        _connection.InsertAll(new[]{
+            _connection.InsertAll(new[]{
             new Person{
                 Id = 1,
                 Name = "Tom",
@@ -97,47 +100,33 @@ public class DataService
                 Age = 37
             }
         });
-    }
+        }
 
-    public IEnumerable<Person> GetPersons()
-    {
-        return _connection.Table<Person>();
-    }
-
-    public IEnumerable<Person> GetPersonsNamedRoberto()
-    {
-        return _connection.Table<Person>().Where(x => x.Name == "Roberto");
-    }
-
-    public Person GetJohnny()
-    {
-        return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
-    }
-
-    public Person CreatePerson()
-    {
-        var p = new Person
+        public IEnumerable<Person> GetPersons()
         {
-            Name = "Johnny",
-            Surname = "Mnemonic",
-            Age = 21
-        };
-        _connection.Insert(p);
-        return p;
-    }
-}
+            return _connection.Table<Person>();
+        }
 
-public class Person
-{
+        public IEnumerable<Person> GetPersonsNamedRoberto()
+        {
+            return _connection.Table<Person>().Where(x => x.Name == "Roberto");
+        }
 
-    [PrimaryKey, AutoIncrement]
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public int Age { get; set; }
+        public Person GetJohnny()
+        {
+            return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
+        }
 
-    public override string ToString()
-    {
-        return string.Format("[Person: Id={0}, Name={1},  Surname={2}, Age={3}]", Id, Name, Surname, Age);
+        public Person CreatePerson()
+        {
+            var p = new Person
+            {
+                Name = "Johnny",
+                Surname = "Mnemonic",
+                Age = 21
+            };
+            _connection.Insert(p);
+            return p;
+        }
     }
 }
